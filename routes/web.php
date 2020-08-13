@@ -23,5 +23,5 @@ Route::resource('/', 'TopicController@index');
 // первым параметром указываем имя для маршрутизации 'topic'
 // второй параметр это имя контроллера
 Route::resource('topic', 'TopicController');
-Route::resource('block', 'BlockController');
+Route::resource('block', 'BlockController'); 
 
