@@ -67,8 +67,10 @@ class TopicController extends Controller
         $blocks = Block::where( 'topicid', $id)->get();
         // SELECT * FROM topics
         $topics = Topic::all();
+        $topicname = Topic::find($id)->topicname;
+        //print($topicname);
 
-        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>$id]);
+        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'blocks'=>$blocks, 'id'=>$id, 'topicname'=>$topicname]);
     }
 
     /**
@@ -103,5 +105,13 @@ class TopicController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request) {
+        $search = $request->searchform;
+        $search = '%'.$search.'%';
+        $topics = Topic::where('topicname', 'like', $search)->get();
+
+        return view('topic.index', ['page'=>'Main page', 'topics'=>$topics, 'id'=>0]);
     }
 }

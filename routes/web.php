@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::resource('/', 'TopicController@index');
 
 
+Route::get('topic/search', 'TopicController@search');
+
 // Маршрутизация для RESTful контроллера. Указывает одной инструкцией
 // и указываеть множество маршрутов не нужно.
 // первым параметром указываем имя для маршрутизации 'topic'

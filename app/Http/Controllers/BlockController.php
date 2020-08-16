@@ -97,7 +97,20 @@ class BlockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $request - Это данные из формы
+        $block = Block::find($id);
+        $block->topicid = $request->topicid;
+        $block->title = $request->title;
+        $block->content = $request->_content;
+
+        $fname = $request->file('imagepath');
+        if($fname !== null) {
+            $original_name = $request->file('imagepath')->getClientOriginalName();
+            $request->file('imagepath')->move(public_path().'/images', $original_name);
+            $block->imagepath = 'images/'.$original_name;
+        }
+        $block->save();
+        return redirect('topic/'.$block->topicid);
     }
 
     /**

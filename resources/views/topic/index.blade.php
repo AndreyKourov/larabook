@@ -7,6 +7,15 @@
 @section('content')
 <div class="row">
     <div class="col-3">
+    <!-- Форма поиска по топикам -->
+    {!! Form::open(['action'=>'TopicController@search', 'class'=>'form', 'method'=>'get']) !!}
+            <div class="input-group">
+                {!! Form::text('searchform', '', ['class'=>'form-control', 'placeholder'=>'Enter topic']) !!}
+                <button class="d-inline btn btn-success" type="submit">Search</button>
+            </div>
+    {!! Form::close() !!}
+
+    <!-- Список топиков -->
         <ul class="list-group">
             @foreach($topics as $topic) 
                 <li>
@@ -20,6 +29,9 @@
         </ul>
     </div>
     <div class="col-9 bg-light">
+    @if($id !=0)
+        <h1 class="text-center text-break">{{$topicname}}</h1>
+        <hr1>
         @if($id != 0)
             @foreach($blocks as $block)
                 <div>
@@ -42,10 +54,9 @@
                         {!! Form::close() !!}
 
                         {{-- Кнопка редактирования --}}
-                        {!! Form::model($block, ['route'=>['block.update', $block->id]]) !!}
-                            {{ Form::hidden('_method', 'PUT') }}
-                            <a href="{{ url('block/'.$block->id.'/edit') }}" class="btn btn-success">Редактировать</a>
-                        {!! Form::close() !!}
+                                                  
+                        <a href="{{ url('block/'.$block->id.'/edit') }}" class="btn btn-success">Редактировать</a>
+
                         <hr>
 
                     </div>

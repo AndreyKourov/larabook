@@ -15,8 +15,8 @@
             {!! Form::text('title', $block->title, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('content', 'Edit content') !!}
-            {!! Form::textarea('content', $block->content, ['class'=>'form-control']) !!}
+            {!! Form::label('_content', 'Edit content') !!}
+            {!! Form::textarea('_content', $block->content, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('imagepath', 'Edit image') !!}
