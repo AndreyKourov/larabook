@@ -27,3 +27,7 @@ Route::get('topic/search', 'TopicController@search');
 Route::resource('topic', 'TopicController');
 Route::resource('block', 'BlockController'); 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

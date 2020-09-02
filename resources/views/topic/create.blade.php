@@ -1,10 +1,7 @@
 {{-- Пожгрузим заготовку странницы из файла /layouts/master.blade.php --}}
 
-@extends('layouts.master')
+@extends('layouts.app')
 
-@section('menu')
-    @parent
-@endsection
 
 @section('content')
     <h1 class="label label-info">{{$page}}</h1>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Block;
 use App\Topic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlockController extends Controller
 {
@@ -25,6 +26,10 @@ class BlockController extends Controller
      */
     public function create()
     {
+        // проверка на логин пользователя
+        if(!Auth::check()) {
+            return redirect('login');
+        }
         $block = new Block;
         $topics = Topic::pluck('topicname', 'id');
         return view('block.create', ['block'=>$block, 'topics'=>$topics, 'page'=>'Forms']);

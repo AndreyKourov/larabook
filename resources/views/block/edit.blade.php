@@ -1,8 +1,5 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
-@section('menu')
-    @parent
-@endsection
 
 @section('content')
     {!! Form::model($block, ['route'=>['block.update', $block->id], 'method'=>'PUT', 'files'=>true]) !!}
